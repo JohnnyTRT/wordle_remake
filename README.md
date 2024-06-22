@@ -1,2 +1,2 @@
 # wordle_remake
-This project is a remake of wordle.
+This project is a remake of wordle using pygame.
