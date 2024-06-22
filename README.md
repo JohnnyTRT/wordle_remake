@@ -1,2 +1,2 @@
 # wordle_remake
-remake of wordle
+This project is a remake of wordle.
