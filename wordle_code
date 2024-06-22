@@ -2,10 +2,29 @@ import pygame
 from sys import exit
 
 pygame.init()
-screen = pygame.display.set_mode((621, 1104))
-pygame.display.set_caption("Birdle")
+screen = pygame.display.set_mode((620, 1100))
+pygame.display.set_caption("Wordle")
 clock = pygame.time.Clock()
+wordle_font = pygame.font.Font("graphics/Wordle_Font.ttf", 35)
 
+
+
+background = pygame.Surface((621, 1104))
+background.fill("grey9")
+
+new_surface = pygame.Surface((621, 1))
+new_surface.fill("White")
+
+new_surface2 = pygame.Surface((621, 1))
+new_surface2.fill("Grey")
+
+wordle_text = wordle_font.render("Wordle", True, "White")
+
+box_surface = pygame.Surface((70, 70))
+box_surface.fill("grey23")
+
+box_surface2 = pygame.Surface((66, 66))
+box_surface2.fill("grey9")
 
 
 
@@ -15,5 +34,82 @@ while True:
             pygame.quit()
             exit()
     
+    screen.blit(background, (0,0))
+    screen.blit(wordle_text, (250, 40))
+    screen.blit(new_surface, (0,20))
+    screen.blit(new_surface2, (0,90))
+
+    screen.blit(box_surface, (125, 250))
+    screen.blit(box_surface, (200, 250))
+    screen.blit(box_surface, (275, 250))
+    screen.blit(box_surface, (350, 250))
+    screen.blit(box_surface, (425, 250))
+
+    screen.blit(box_surface2, (127, 252))
+    screen.blit(box_surface2, (202, 252))
+    screen.blit(box_surface2, (277, 252))
+    screen.blit(box_surface2, (352, 252))
+    screen.blit(box_surface2, (427, 252))
+
+    screen.blit(box_surface, (125, 325))
+    screen.blit(box_surface, (200, 325))
+    screen.blit(box_surface, (275, 325))
+    screen.blit(box_surface, (350, 325))
+    screen.blit(box_surface, (425, 325))
+
+    screen.blit(box_surface2, (127, 327))
+    screen.blit(box_surface2, (202, 327))
+    screen.blit(box_surface2, (277, 327))
+    screen.blit(box_surface2, (352, 327))
+    screen.blit(box_surface2, (427, 327))
+
+    screen.blit(box_surface, (125, 400))
+    screen.blit(box_surface, (200, 400))
+    screen.blit(box_surface, (275, 400))
+    screen.blit(box_surface, (350, 400))
+    screen.blit(box_surface, (425, 400))
+
+    screen.blit(box_surface2, (127, 402))
+    screen.blit(box_surface2, (202, 402))
+    screen.blit(box_surface2, (277, 402))
+    screen.blit(box_surface2, (352, 402))
+    screen.blit(box_surface2, (427, 402))
+
+    screen.blit(box_surface, (125, 475))
+    screen.blit(box_surface, (200, 475))
+    screen.blit(box_surface, (275, 475))
+    screen.blit(box_surface, (350, 475))
+    screen.blit(box_surface, (425, 475))
+
+    screen.blit(box_surface2, (127, 477))
+    screen.blit(box_surface2, (202, 477))
+    screen.blit(box_surface2, (277, 477))
+    screen.blit(box_surface2, (352, 477))
+    screen.blit(box_surface2, (427, 477))
+
+    screen.blit(box_surface, (125, 550))
+    screen.blit(box_surface, (200, 550))
+    screen.blit(box_surface, (275, 550))
+    screen.blit(box_surface, (350, 550))
+    screen.blit(box_surface, (425, 550))
+
+    screen.blit(box_surface2, (127, 552))
+    screen.blit(box_surface2, (202, 552))
+    screen.blit(box_surface2, (277, 552))
+    screen.blit(box_surface2, (352, 552))
+    screen.blit(box_surface2, (427, 552))
+
+    screen.blit(box_surface, (125, 625))
+    screen.blit(box_surface, (200, 625))
+    screen.blit(box_surface, (275, 625))
+    screen.blit(box_surface, (350, 625))
+    screen.blit(box_surface, (425, 625))
+
+    screen.blit(box_surface2, (127, 627))
+    screen.blit(box_surface2, (202, 627))
+    screen.blit(box_surface2, (277, 627))
+    screen.blit(box_surface2, (352, 627))
+    screen.blit(box_surface2, (427, 627))
+
     pygame.display.update()
     clock.tick(60) 
