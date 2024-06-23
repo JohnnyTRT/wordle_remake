@@ -1,14 +1,33 @@
 import pygame
 from sys import exit
+import random
+
+def check(word, secret):
+    partial_indexes = []
+    correct_indexes = []
+    for i in range(5):
+        if word[i] in secret:
+            if word[i] == secret[i]:
+                correct_indexes.append(int(i))
+            else:
+                partial_indexes.append(int(i))
+            secret = secret.replace(word[i], ".", 1)
+    final = [partial_indexes, correct_indexes]
+    return final
 
 pygame.init()
 screen = pygame.display.set_mode((620, 1100))
 pygame.display.set_caption("Wordle")
 clock = pygame.time.Clock()
 wordle_font = pygame.font.Font("graphics/Wordle_Font.ttf", 35)
+base_font = pygame.font.Font("graphics/FranklinGothic.ttf", 75)
 
+#secret word block
+words = ["spicy", "grind", "onion"]
+random.seed()
+secret_word = words[random.randint(0, 2)]
 
-
+#surfaces
 background = pygame.Surface((621, 1104))
 background.fill("grey9")
 
@@ -26,6 +45,10 @@ box_surface.fill("grey23")
 box_surface2 = pygame.Surface((66, 66))
 box_surface2.fill("grey9")
 
+#word positioning
+
+user_text = ""
+
 
 
 while True:
@@ -33,6 +56,14 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_DELETE or event.key == pygame.K_BACKSPACE:
+                user_text = user_text[0:-1]
+            elif len(user_text) < 5:
+                if event.unicode.isalpha() == True:
+                    user_text += event.unicode.upper()
+            else:
+                pass
     
     screen.blit(background, (0,0))
     screen.blit(wordle_text, (250, 40))
@@ -110,6 +141,15 @@ while True:
     screen.blit(box_surface2, (277, 627))
     screen.blit(box_surface2, (352, 627))
     screen.blit(box_surface2, (427, 627))
+
+
+    x_offset = 136
+
+    for i in range(len(user_text)):
+        textScreen = base_font.render(user_text[i], True, "White")
+        screen.blit(textScreen, (x_offset, 258))
+        x_offset += 75
+
 
     pygame.display.update()
     clock.tick(60) 
