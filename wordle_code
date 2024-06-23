@@ -49,7 +49,15 @@ box_surface2.fill("grey9")
 
 user_text = ""
 
+locked1 = ""
+locked2 = ""
+locked3 = ""
+locked4 = ""
+locked5 = ""
+locked6 = ""
 
+line = 1
+row = 258
 
 while True:
     for event in pygame.event.get():
@@ -62,6 +70,25 @@ while True:
             elif len(user_text) < 5:
                 if event.unicode.isalpha() == True:
                     user_text += event.unicode.upper()
+            elif event.key == pygame.K_RETURN:
+                if len(user_text) == 5:
+                    if line == 1:
+                        locked1 = user_text
+                    elif line == 2:
+                        locked2 = user_text
+                    elif line == 3:
+                        locked3 = user_text
+                    elif line == 4:
+                        locked4 = user_text
+                    elif line == 5:
+                        locked5 = user_text
+                    elif line == 6:
+                        locked6 = user_text
+                    else:
+                        pass
+                    user_text = ""
+                    row += 75
+                    line += 1
             else:
                 pass
     
@@ -142,13 +169,48 @@ while True:
     screen.blit(box_surface2, (352, 627))
     screen.blit(box_surface2, (427, 627))
 
+    column1 = 136
+    for i in range(len(locked1)):
+        textScreen1 = base_font.render(locked1[i], True, "White")
+        screen.blit(textScreen1, (column1, 258))
+        column1 += 75
+    
+    column2 = 136
+    for i in range(len(locked2)):
+        textScreen2 = base_font.render(locked2[i], True, "White")
+        screen.blit(textScreen2, (column2, 333))
+        column2 += 75
+    
+    column3 = 136
+    for i in range(len(locked3)):
+        textScreen3 = base_font.render(locked3[i], True, "White")
+        screen.blit(textScreen3, (column3, 408))
+        column3 += 75
 
-    x_offset = 136
+    column4 = 136
+    for i in range(len(locked4)):
+        textScreen4 = base_font.render(locked4[i], True, "White")
+        screen.blit(textScreen4, (column4, 483))
+        column4 += 75
+
+    column5 = 136
+    for i in range(len(locked5)):
+        textScreen5 = base_font.render(locked5[i], True, "White")
+        screen.blit(textScreen5, (column5, 558))
+        column5 += 75
+
+    column6 = 136
+    for i in range(len(locked6)):
+        textScreen6 = base_font.render(locked6[i], True, "White")
+        screen.blit(textScreen6, (column6, 633))
+        column6 += 75
+
+    column = 136
 
     for i in range(len(user_text)):
         textScreen = base_font.render(user_text[i], True, "White")
-        screen.blit(textScreen, (x_offset, 258))
-        x_offset += 75
+        screen.blit(textScreen, (column, row))
+        column += 75
 
 
     pygame.display.update()
