@@ -167,9 +167,7 @@ while True:
                             locked5 = user_text
                         elif line == 6:
                             locked6 = user_text
-                            time.sleep(5)
-                            pygame.quit()
-                            exit()
+                            win = 1
                         else:
                             pass
                         if user_text == secret_word.upper():
