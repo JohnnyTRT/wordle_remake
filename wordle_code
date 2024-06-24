@@ -1,6 +1,7 @@
 import pygame
 from sys import exit
 import random
+import time
 
 def check(word, secret):
     partial_indexes = []
@@ -31,6 +32,7 @@ secret_word = words[random.randint(0, 2)]
 background = pygame.Surface((621, 1104))
 background.fill("grey9")
 
+
 new_surface = pygame.Surface((621, 1))
 new_surface.fill("White")
 
@@ -42,8 +44,20 @@ wordle_text = wordle_font.render("Wordle", True, "White")
 box_surface = pygame.Surface((70, 70))
 box_surface.fill("grey23")
 
+boxcolor = box_surface
+
+yellow_box = pygame.Surface((70, 70))
+yellow_box.fill("Yellow")
+green_box = pygame.Surface((70, 70))
+green_box.fill("Green")
+
 box_surface2 = pygame.Surface((66, 66))
 box_surface2.fill("grey9")
+
+yellow_box2 = pygame.Surface((66, 66))
+yellow_box2.fill("Yellow")
+green_box2 = pygame.Surface((66, 66))
+green_box2.fill("Green")
 
 #word positioning
 
@@ -59,6 +73,9 @@ locked6 = ""
 line = 1
 row = 258
 
+normal = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+correct = []
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -72,6 +89,7 @@ while True:
                     user_text += event.unicode.upper()
             elif event.key == pygame.K_RETURN:
                 if len(user_text) == 5:
+                    free = check(user_text, secret_word)
                     if line == 1:
                         locked1 = user_text
                     elif line == 2:
@@ -84,6 +102,9 @@ while True:
                         locked5 = user_text
                     elif line == 6:
                         locked6 = user_text
+                        time.sleep(5)
+                        pygame.quit()
+                        exit()
                     else:
                         pass
                     user_text = ""
@@ -97,23 +118,45 @@ while True:
     screen.blit(new_surface, (0,20))
     screen.blit(new_surface2, (0,90))
 
-    screen.blit(box_surface, (125, 250))
-    screen.blit(box_surface, (200, 250))
-    screen.blit(box_surface, (275, 250))
-    screen.blit(box_surface, (350, 250))
-    screen.blit(box_surface, (425, 250))
+    if 0 in normal:
+        screen.blit(boxcolor, (125, 250))
+        screen.blit(box_surface2, (127, 252))
+    elif 0 in correct:
+        screen.blit(green_box, (125, 250))
+    else:
+        screen.blit(yellow_box, (125, 250))
 
-    screen.blit(box_surface2, (127, 252))
-    screen.blit(box_surface2, (202, 252))
-    screen.blit(box_surface2, (277, 252))
+    if 1 in normal:
+        screen.blit(boxcolor, (200, 250))
+        screen.blit(box_surface2, (202, 252))
+    elif 1 in correct:
+        screen.blit(green_box, (200, 250))
+    else:
+        screen.blit(yellow_box, (200, 250))
+    
+    if 2 in normal:
+        screen.blit(boxcolor, (275, 250))
+        screen.blit(box_surface2, (277, 252))
+    elif 2 in correct:
+        screen.blit(green_box, (275, 250))
+    else:
+        screen.blit(yellow_box, (275, 250))
+        
+    
+    
+    
+    screen.blit(boxcolor, (350, 250))
+    screen.blit(boxcolor, (425, 250))
+
+    
     screen.blit(box_surface2, (352, 252))
     screen.blit(box_surface2, (427, 252))
 
-    screen.blit(box_surface, (125, 325))
-    screen.blit(box_surface, (200, 325))
-    screen.blit(box_surface, (275, 325))
-    screen.blit(box_surface, (350, 325))
-    screen.blit(box_surface, (425, 325))
+    screen.blit(boxcolor, (125, 325))
+    screen.blit(boxcolor, (200, 325))
+    screen.blit(boxcolor, (275, 325))
+    screen.blit(boxcolor, (350, 325))
+    screen.blit(boxcolor, (425, 325))
 
     screen.blit(box_surface2, (127, 327))
     screen.blit(box_surface2, (202, 327))
@@ -121,11 +164,11 @@ while True:
     screen.blit(box_surface2, (352, 327))
     screen.blit(box_surface2, (427, 327))
 
-    screen.blit(box_surface, (125, 400))
-    screen.blit(box_surface, (200, 400))
-    screen.blit(box_surface, (275, 400))
-    screen.blit(box_surface, (350, 400))
-    screen.blit(box_surface, (425, 400))
+    screen.blit(boxcolor, (125, 400))
+    screen.blit(boxcolor, (200, 400))
+    screen.blit(boxcolor, (275, 400))
+    screen.blit(boxcolor, (350, 400))
+    screen.blit(boxcolor, (425, 400))
 
     screen.blit(box_surface2, (127, 402))
     screen.blit(box_surface2, (202, 402))
@@ -133,11 +176,11 @@ while True:
     screen.blit(box_surface2, (352, 402))
     screen.blit(box_surface2, (427, 402))
 
-    screen.blit(box_surface, (125, 475))
-    screen.blit(box_surface, (200, 475))
-    screen.blit(box_surface, (275, 475))
-    screen.blit(box_surface, (350, 475))
-    screen.blit(box_surface, (425, 475))
+    screen.blit(boxcolor, (125, 475))
+    screen.blit(boxcolor, (200, 475))
+    screen.blit(boxcolor, (275, 475))
+    screen.blit(boxcolor, (350, 475))
+    screen.blit(boxcolor, (425, 475))
 
     screen.blit(box_surface2, (127, 477))
     screen.blit(box_surface2, (202, 477))
@@ -145,11 +188,11 @@ while True:
     screen.blit(box_surface2, (352, 477))
     screen.blit(box_surface2, (427, 477))
 
-    screen.blit(box_surface, (125, 550))
-    screen.blit(box_surface, (200, 550))
-    screen.blit(box_surface, (275, 550))
-    screen.blit(box_surface, (350, 550))
-    screen.blit(box_surface, (425, 550))
+    screen.blit(boxcolor, (125, 550))
+    screen.blit(boxcolor, (200, 550))
+    screen.blit(boxcolor, (275, 550))
+    screen.blit(boxcolor, (350, 550))
+    screen.blit(boxcolor, (425, 550))
 
     screen.blit(box_surface2, (127, 552))
     screen.blit(box_surface2, (202, 552))
@@ -157,11 +200,11 @@ while True:
     screen.blit(box_surface2, (352, 552))
     screen.blit(box_surface2, (427, 552))
 
-    screen.blit(box_surface, (125, 625))
-    screen.blit(box_surface, (200, 625))
-    screen.blit(box_surface, (275, 625))
-    screen.blit(box_surface, (350, 625))
-    screen.blit(box_surface, (425, 625))
+    screen.blit(boxcolor, (125, 625))
+    screen.blit(boxcolor, (200, 625))
+    screen.blit(boxcolor, (275, 625))
+    screen.blit(boxcolor, (350, 625))
+    screen.blit(boxcolor, (425, 625))
 
     screen.blit(box_surface2, (127, 627))
     screen.blit(box_surface2, (202, 627))
